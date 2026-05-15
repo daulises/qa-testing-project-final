@@ -77,25 +77,6 @@ Estos defectos fueron documentados con pasos claros de reproducción, resultados
 
 ---
 
-## 📊 Ejemplo de bug report
-
-**ID:** PFQA-XX  
-**Título:** Error al crear pedido con datos incompletos  
-**Severidad:** Alta  
-**Prioridad:** Alta  
-
-**Pasos:**
-1. Enviar request de creación de pedido sin campo obligatorio  
-2. Observar respuesta del sistema  
-
-**Resultado esperado:**  
-El sistema debe rechazar la solicitud con error 400  
-
-**Resultado obtenido:**  
-El sistema crea el pedido con datos incompletos  
-
----
-
 ## 📈 Conclusiones
 
 El sistema presenta áreas de mejora en:
@@ -121,10 +102,62 @@ Las pruebas realizadas permitieron identificar defectos que impactan directament
 ## 📎 Evidencia
 
 📂 Archivo completo del proyecto:  
-[https://docs.google.com/spreadsheets/d/13zkcESISmUnmBxehL_Yc6vMx-H9ORXbe/edit?usp=drive_link&ouid=100945750570669788412&rtpof=true&sd=true]
+[]
 
-📸 (Opcional) Screenshots de pruebas o bugs
+## 📸 Evidencia de pruebas
 
+## 🐞 Defectos y validaciones relevantes
+
+Durante la ejecución de pruebas se identificaron defectos en la validación de datos, funcionamiento de endpoints y consistencia en base de datos, los cuales impactan directamente la lógica de negocio del sistema.
+
+---
+
+### 🔹 API Testing – Consulta de pedido (caso exitoso)
+Se valida la obtención de información de un pedido mediante el endpoint `GET /api/v1/orders/track`.
+
+✔️ Resultado: Respuesta correcta con código 200 OK y estructura JSON esperada.
+
+![API GET Order](./evidence/api-get-order-success.png)
+
+---
+
+### 🔹 API Testing – Error en cancelación de pedido
+El endpoint `/api/v1/orders/cancel` devuelve un error 400 incluso cuando se envían parámetros válidos.
+
+❌ Problema: El endpoint no procesa correctamente la solicitud, impidiendo cancelar pedidos.
+
+![API Cancel Error](./evidence/api-cancel-error-400.png)
+
+---
+
+### 🔹 Validación en base de datos
+Se realiza validación directa en base de datos para verificar el estado del pedido tras ejecutar operaciones.
+
+❌ Problema: El estado del pedido no cambia después de la operación esperada, indicando inconsistencia entre backend y base de datos.
+
+![DB Validation](./evidence/db-validation-query.png)
+
+---
+
+### 🔹 Bug – Validación incorrecta en teléfono
+El campo "Teléfono" no cumple con las reglas de validación definidas.
+
+❌ Problemas detectados:
+- No acepta números válidos de 10 dígitos  
+- Permite valores mayores a 12 caracteres  
+- Validación inconsistente  
+
+![Phone Validation Bug](./evidence/bug-phone-validation.png)
+
+---
+
+### 🔹 Bug – Eliminación de courier no elimina pedidos relacionados
+El endpoint `DELETE /api/v1/courier/:id` elimina el courier, pero no elimina los pedidos asociados en la base de datos.
+
+❌ Problema:
+Se generan registros huérfanos, lo que afecta la integridad de los datos.
+
+![Delete Bug](./evidence/bug-delete-endpoint.png)
 ---
 
 ## 👨‍💻 Autor
