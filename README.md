@@ -99,10 +99,11 @@ Las pruebas realizadas permitieron identificar defectos que impactan directament
 
 ---
 
-## 📎 Evidencia
+## 📎 Archivo completo del proyecto
 
-📂 Archivo completo del proyecto:  
-[]
+Puedes consultar el documento completo de pruebas aquí:
+
+👉 [QA Testing Project – Excel](./Files/QA_Testing_Project_Daniel_Chavez.xlsx)
 
 ## 📸 Evidencia de pruebas
 
