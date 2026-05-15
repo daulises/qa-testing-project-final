@@ -1,4 +1,4 @@
-# 🧪 QA Testing Project – Aplicación de Pedidos y Repartidores
+# 🧪 QA Testing Project – Web & API Testing (Orders & Courier System)
 
 ## 📌 Descripción
 Proyecto de pruebas QA enfocado en la validación funcional y de API de una aplicación de gestión de pedidos y repartidores.  
@@ -75,6 +75,12 @@ Durante la ejecución de pruebas se detectaron múltiples defectos, entre ellos:
 
 Estos defectos fueron documentados con pasos claros de reproducción, resultados esperados vs obtenidos y evidencia.
 
+## 📊 Impacto del testing
+
+- Se identificaron defectos críticos en endpoints de API que impedían operaciones clave (cancelación de pedidos)
+- Se detectaron inconsistencias entre backend y base de datos
+- Se evidenciaron fallos en validación de datos que afectan la experiencia del usuario
+- Se documentaron bugs con evidencia clara para facilitar su reproducción y corrección
 ---
 
 ## 📈 Conclusiones
@@ -91,11 +97,11 @@ Las pruebas realizadas permitieron identificar defectos que impactan directament
 
 ## 🚀 Habilidades demostradas
 
-- Diseño de casos de prueba efectivos  
-- Identificación y documentación de bugs  
-- Validación de APIs REST  
-- Análisis de requisitos  
-- Testing basado en escenarios reales  
+- Diseño y ejecución de casos de prueba funcionales
+- Identificación, documentación y seguimiento de bugs
+- Validación de APIs REST (Postman)
+- Verificación de consistencia entre backend y base de datos
+- Análisis de requisitos y escenarios de prueba
 
 ---
 
@@ -103,7 +109,7 @@ Las pruebas realizadas permitieron identificar defectos que impactan directament
 
 Puedes consultar el documento completo de pruebas aquí:
 
-👉 [QA Testing Project – Excel](./Files/QA_Testing_Project_Daniel_Chavez.xlsx)
+👉 [Descargar documentación completa de pruebas (Excel)](./Files/QA_Testing_Project_Daniel_Chavez.xlsx)
 
 ## 📸 Evidencia de pruebas
 
@@ -123,7 +129,7 @@ Se valida la obtención de información de un pedido mediante el endpoint `GET /
 ---
 
 ### 🔹 API Testing – Error en cancelación de pedido
-El endpoint `/api/v1/orders/cancel` devuelve un error 400 incluso cuando se envían parámetros válidos.
+El endpoint `/api/v1/orders/cancel` devuelve un error 400 incluso con datos válidos.
 
 ❌ Problema: El endpoint no procesa correctamente la solicitud, impidiendo cancelar pedidos.
 
